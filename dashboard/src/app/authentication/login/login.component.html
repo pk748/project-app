@@ -1,85 +1,58 @@
-<div class="container-fluid p-h-0 p-v-20 h-100 bg" style="background-image: url('assets/images/others/login-3.png')">
-    <div class="d-flex flex-column justify-content-between h-100">
-        <div class="d-none d-md-block"></div>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-7 col-lg-5 m-h-auto">
-                    <nz-card class="m-b-100 shadow-lg">
-                        <div class="d-flex align-items-center justify-content-between m-b-30">
-                            <!-- <h4>Crunch <span style="color:skyblue;">Media</span>Works</h4> -->
-                            <img class="img-fluid" alt="LOGO" src="" width="200">
-                            <h2 class="m-b-0">Sign In</h2>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between m-b-30">
-                            <span>Signin as User.</span>
-                        </div>
-                        <form nz-form [formGroup]="loginForm" nzLayout="vertical" class="login-form" >
-
-                            <nz-form-item [ngClass]="{'ant-form-item-has-error' : signin_email_apply_error}" >
-                                <nz-form-label nzRequired nzFor="userName">Email</nz-form-label>
-                                <nz-form-control nzErrorTip="Please input your email!">
+<div class="container-fluid p-0 h-100">
+    <div class="row no-gutters h-100">
+        <div class="col-lg-4 d-none d-lg-flex" style="background-image:url('assets/images/others/login-1.jpg')">
+            <div class="d-flex h-100 p-h-40 p-v-15 flex-column justify-content-between">
+                <div>
+                    <!-- <img class="img-fluid" alt="LOGO" src="" width="200"> -->
+                </div>
+                <div>
+                    <h1 class="text-white m-b-20 font-weight-normal">Welcome</h1>
+                    <p class="text-white font-size-16 lh-2 w-80 opacity-08">Climb leg rub face on everything give attitude nap all day for under the bed. Chase mice attack feet but rub face on everything hopped up.</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                   
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 bg-white">
+            <div class="container h-100">
+                <div class="row no-gutters h-100 align-items-center">
+                    <div class="col-md-8 col-lg-7 col-xl-6 mx-auto">
+                        <img class="img-fluid" style="width: 100%; height: 30%;" alt="LOGO" src="../../../assets/images/logo/logo1.jpeg" width="200">
+                        <h2>Sign In</h2>
+                        <p class="m-b-30">Enter your credential to get access</p>
+                        <form nz-form [formGroup]="loginForm" nzLayout="vertical" class="login-form" (ngSubmit)="submitForm()">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzFor="userName">Username</nz-form-label>
+                                <nz-form-control nzErrorTip="Please input your username!">
                                     <nz-input-group [nzPrefix]="prefixUser">
-                                        <input type="text" nz-input formControlName="userName" placeholder="Email" [(ngModel)]="signin_email" >
+                                        <input type="text" nz-input formControlName="userName" placeholder="Username">
                                     </nz-input-group>
                                 </nz-form-control>
-
-                                <div class="ant-form-item-explain ng-tns-c229-13 ng-star-inserted" *ngIf="signin_email_show_error_message">
-                                  <div class="ng-tns-c229-13 ng-trigger ng-trigger-helpMotion">
-                                    {{signin_email_error_message}}
-                                  </div>
-                                </div>
-
                             </nz-form-item>
-
-                            <nz-form-item class="relative" [ngClass]="{'ant-form-item-has-error' : signin_password_apply_error}" >
+                            <nz-form-item>
                                 <nz-form-label nzRequired nzFor="password">Password</nz-form-label>
-                                <!-- <a class="float-right font-size-13 p-t-10 text-muted" style="position:absolute; right: 0" [routerLink]="['/authentication/reset-password-1']">Forget Password?</a> -->
+                                <a class="font-size-13 p-t-10 text-muted" style="position:absolute; right: 0" [routerLink]="['/authentication/reset-password-1']">Forget Password?</a>
                                 <nz-form-control nzErrorTip="Please input your Password!">
                                     <nz-input-group [nzPrefix]="prefixLock">
-                                        <input type="password" nz-input formControlName="password" placeholder="Password" [(ngModel)]="signin_password" >
+                                        <input type="password" nz-input formControlName="password" placeholder="Password">
                                     </nz-input-group>
                                 </nz-form-control>
-
-                                <p>
-                                    <!-- <a class="float-left font-size-13 p-t-10 " style="position:absolute; right: 0" [routerLink]="['/authentication/forget_pass']">Forget Password?</a> -->
-                                </p>
-
-                                <div class="ant-form-item-explain ng-tns-c229-13 ng-star-inserted" *ngIf="signin_password_show_error_message">
-                                  <div class="ng-tns-c229-13 ng-trigger ng-trigger-helpMotion">
-                                    {{signin_password_error_message}}
-                                  </div>
-                                </div>
-
                             </nz-form-item>
-
                             <nz-form-item>
                                 <nz-form-control>
-                                    <nz-alert nzType="error" nzMessage="{{error_message}}" nzShowIcon *ngIf="show_error_message" ></nz-alert>
-                                    <br />
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <span class="font-size-13 text-muted"></span>
-                                        <button nz-button class="login-form-button" [nzType]="'primary'" (click)="signIn()" *ngIf="show_signin_btn" >Sign In</button>
-                                        <button nz-button class="login-form-button" [nzType]="'primary'" *ngIf="show_signin_loading_btn" nzLoading >Signing In</button>
+                                        <span class="font-size-13 text-muted">Don't have an account? <a class="small" [routerLink]="['/authentication/sign-up-1']"> Signup</a></span>
+                                        <button nz-button class="login-form-button" [nzType]="'primary'">Sign In</button>
                                     </div>
                                 </nz-form-control>
                             </nz-form-item>
                         </form>
                         <ng-template #prefixUser><i nz-icon nzType="user"></i></ng-template>
                         <ng-template #prefixLock><i nz-icon nzType="lock"></i></ng-template>
-                    </nz-card>
-                </div>
+                    </div>
+                </div>  
             </div>
-        </div>
-        <div class="d-none d-md-flex p-h-40 justify-content-between">
-            <span class=""></span>
-            <ul class="list-inline">
-                <li class="list-inline-item">
-                    <a class="text-dark text-link" href=""></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="text-dark text-link" href=""></a>
-                </li>
-            </ul>
         </div>
     </div>
 </div>
